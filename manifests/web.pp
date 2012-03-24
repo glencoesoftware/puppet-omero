@@ -4,7 +4,7 @@ class omero::web (
   $web_source = hiera('omero_web_config_source', ''),
   $omero_owner = hiera('omero_owner'),
   $omero_home = hiera('omero_home'),
-  $omero_installed = hiera('omero_installed'),
+  $omero_installed = hiera('omero_installed', false),
   $webtype = hiera('webtype')
 ) {
   package {

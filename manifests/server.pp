@@ -8,7 +8,7 @@ class omero::server (
   $db_patch = hiera('db_patch'),
   $omero_root_pw = hiera('root_password'),
   $omero_dbname = hiera('omero_dbname'),
-  $omero_installed = hiera('omero_installed'),
+  $omero_installed = hiera('omero_installed', false),
   $dbtype = hiera('dbtype'),
 ) inherits omero {
 
