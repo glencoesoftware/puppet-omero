@@ -15,24 +15,24 @@
 # Sample Usage:
 #
 class omero::database::postgres (
-  $version = '9.1',
-  $pg_user = 'postgres',
-  $service_name = ''
+  $version = hiera('postgres_version'),
+  $pg_user = hiera('postgres_user'),
+  $owner = hiera('omero_db_user'),
+  $owner_pass = hiera('omero_db_pass'),
+  $database = hiera('omero_dbname'),
+  $service_name = hiera('postgres_custom_service_name', ''),
 ) {
 
   # install classes
-  class { 'omero::database::postgres::packages':
-    version => $version,
-    ensure  => 'present',
-  }
+  class { 'omero::database::postgres::packages': }
 
   $pg_service_name = $service_name ? {
     ''      => "postgresql-${version}",
     default => $service_name
   }
 
-  $pg_vardir = "/var/lib/pgsql/${version}"
-  $pg_bindir = "/usr/pgsql-${version}/bin"
+  $vardir = "/var/lib/pgsql/${version}"
+  $bindir = "/usr/pgsql-${version}/bin"
 
   File { 
     owner   => $pg_user,
@@ -43,10 +43,11 @@ class omero::database::postgres (
   # this may only work on rhel/centos (depends on initscript)
   exec {
     'initdb':
-      command => "service postgresql-${version} initdb"
-      path    => [ '/sbin', '/usr/sbin', '/bin', '/usr/bin', "${pg_bindir}" ],
-      creates => "${pg_vardir}/data/PG_VERSION",
-      require => Class['omero::database::postgres::packages'],
+      command     => "service postgresql-${version} initdb",
+      path        => [ '/sbin', '/usr/sbin', '/bin', '/usr/bin', "${bindir}" ],
+      creates     => "${vardir}/data/PG_VERSION",
+      environment => [ 'LANG=en_US.UTF-8' ],
+      require     => Class['omero::database::postgres::packages'],
       ;
   }
 
@@ -68,9 +69,12 @@ class omero::database::postgres (
   }
 
   # create db and db_owner
-  omero::database::postgres::db { $omero_db:
-    owner   => $omero_db_owner,
-    require => Class['omero::database::postgres::packages'],
+  omero::database::postgres::db { $database:
+    owner      => $owner,
+    owner_pass => $owner_pass,
+    pg_user    => $pg_user,
+    version    => $version,
+    require    => Class['omero::database::postgres::packages'],
   }
 
 }

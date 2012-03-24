@@ -1,8 +1,9 @@
-define omero::database::postgres::user (
+define omero::database::postgres::owner (
   $ensure  = 'present',
   $owner   = $name,
   $pg_user,
-  $version
+  $password,
+  $version,
 ) {
 
   $pg_dir = "/usr/pgsql-${version}"
@@ -12,12 +13,20 @@ define omero::database::postgres::user (
 
   if $ensure == 'present' {
 
+    $owner_pass = $password ? { '' => '', default => "PASSWORD '${password}'" }
+    $a = '\"'
+    $q_owner = "${a}${owner}${a}"
+
+    $p_create = [
+      "CREATE ROLE ${q_owner} ${owner_pass} NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN"
+    ]
+
     exec { "createuser $owner":
-      command => "createuser --no-superuser --no-createdb --no-createrole ${owner}",
-      path    => [ '/usr/bin', "${pg_dir}/bin" ],
-      user    => $pg_user,
-      unless  => $userexists,
-      ##FIXME require => Class["postgresql::server"],
+      command         => "psql -c \"${p_create}\"",
+      path            => [ '/bin', '/usr/bin', "${pg_dir}/bin" ],
+      user            => $pg_user,
+      unless          => $userexists,
+      logoutput       => 'true',
     }
 
   } elsif $ensure == 'absent' {
