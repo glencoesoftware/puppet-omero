@@ -1,4 +1,6 @@
-class omero::packages {
+class omero::packages (
+  $pytables_support = hiera('pytables_support', false),
+) {
 
   $packages = [
     'sqlite-devel',
@@ -35,7 +37,6 @@ class omero::packages {
   # there's not an available upgraded package for numby that satisfies pytables
   # kludgy -- may want to roll our own packages for everything...
 
-  $pytables_support = true
   if $pytables_support {
     package {                                                                 
       'hdf5-devel':                                                             
