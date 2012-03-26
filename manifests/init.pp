@@ -46,14 +46,19 @@ class omero (
     }
   }
 
+  # both rc scripts will be generated if they don't exist -- otherwise will be left alone
+  # to that end if they are generated once future changes will not be reflected
   file {
     'omero-profile.sh':
-      path    => '/etc/profile.d/omero.sh',
+      # use ~/.profile as it shouldn't likely exist from skel or other places and is bash/sh specific
+      path    => "${omero_home}/.profile",
       content => template("${module_name}/omero-profile.sh.erb"),
+      replace => false,
       ;
     'omero-profile.csh':
-      path    => '/etc/profile.d/omero.csh',
+      path    => "${omero_home}/.cshrc",
       content => template("${module_name}/omero-profile.csh.erb"),
+      replace => false,
       ;
   }
 }
