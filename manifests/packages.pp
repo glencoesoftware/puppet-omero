@@ -9,8 +9,8 @@ class omero::packages {
     'apg',
   ]
 
+  # scipy will pull in numpy
   $python_packages = [
-    'numpy',
     'scipy',
     'python-imaging',
     'python-devel',
