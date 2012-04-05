@@ -43,7 +43,7 @@ class omero::database::postgres (
   # this may only work on rhel/centos (depends on initscript)
   exec {
     'initdb':
-      command     => "service postgresql-${version} initdb",
+      command     => "service postgresql-${version} initdb en_US.UTF-8",
       path        => [ '/sbin', '/usr/sbin', '/bin', '/usr/bin', "${bindir}" ],
       creates     => "${vardir}/data/PG_VERSION",
       environment => [ 'LANG=en_US.UTF-8' ],
