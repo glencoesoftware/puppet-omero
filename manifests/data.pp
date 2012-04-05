@@ -11,9 +11,6 @@ class omero::data {
   $omero_owner = 'omero'
   $omero_group = 'omero'
 
-  # create the omero user?
-  $create_omero_user = true
-
   # directories
   $omero_home = '/opt/omero'
   $ice_home = '/usr/share/Ice-3.3.1'
@@ -30,7 +27,7 @@ class omero::data {
   $webtype = 'apache'
   $dbtype = 'postgres'
   $java_version = '1.6.0'
-  $pytables_support = false
+  $pytables_support = ''
 
   $epel_release_rpm = 'http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-5.noarch.rpm'
   $rpmforge_release_rpm = 'http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm'
@@ -56,4 +53,7 @@ class omero::data {
 
   # development only -- if you want to setup the structure for omero without actually having omero installed/setup
   $omero_installed = false
+
+  # create the omero user?
+  $create_omero_user = true
 }
