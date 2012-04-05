@@ -11,6 +11,9 @@ class omero::web::apache (
       name    => 'mod_fastcgi',
       require => Package['rpmforge-release'],
       ;
+    'mod_ssl':
+      name => 'mod_ssl',
+      ;
     'rpmforge-release':
       source   => $rpmforge_release_rpm,
       provider => 'rpm',
