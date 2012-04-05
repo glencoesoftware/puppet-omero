@@ -27,7 +27,6 @@ class omero::data {
   $webtype = 'apache'
   $dbtype = 'postgres'
   $java_version = '1.6.0'
-  $pytables_support = ''
 
   $epel_release_rpm = 'http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-5.noarch.rpm'
   $rpmforge_release_rpm = 'http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm'
