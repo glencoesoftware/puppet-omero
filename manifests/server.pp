@@ -23,7 +23,7 @@ class omero::server (
       ;
   }
 
-  Class['omero::server'] -> Class['omero::packages']
+  Class['omero::server'] <- Class['omero::packages']
 
   # create omero_home as a link to a target if defined otherwise a directory
   file { 'omero-home':
