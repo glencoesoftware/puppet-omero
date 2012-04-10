@@ -93,12 +93,12 @@ class omero::packages (
         source   => $glencoe_release_rpm,
         provider => 'rpm',
         ;
-      'omero::server':
-        ensure  => 'installed',
-        require => Package['glencoesoftware-release'],
-        ;
       'omero':
         ensure => 'installed',
+        require => Package['glencoesoftware-release'],
+        ;
+      'omero-server':
+        ensure  => 'installed',
         require => Package['glencoesoftware-release'],
         ;
     }
