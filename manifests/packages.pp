@@ -101,6 +101,10 @@ class omero::packages (
         ensure  => 'installed',
         require => Package['glencoesoftware-release'],
         ;
+      'omero-server-sql':
+        ensure  => 'installed',
+        require => Package['glencoesoftware-release'],
+        ;
     }
   } else {
     # java setup and install
