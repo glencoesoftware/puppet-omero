@@ -1,5 +1,7 @@
 class omero::packages (
   $pytables_support = hiera('pytables_support', false),
+  $omero_packages = hiera('omero_packages', false),
+  $glencoe_release_rpm = hiera('glencoe_release_rpm', ''),
 ) {
 
   $packages = [
@@ -84,10 +86,27 @@ class omero::packages (
     }
   }
 
-  # java setup and install
-  class { 'omero::java': }
+  if $omero_packages {
+    package {
+      'glencoesoftware-release':
+        ensure   => 'installed',
+        source   => $glencoe_release_rpm,
+        provider => 'rpm',
+        ;
+      'omero::server':
+        ensure  => 'installed',
+        require => Package['glencoesoftware-release'],
+        ;
+      'omero':
+        ensure => 'installed',
+        require => Package['glencoesoftware-release'],
+        ;
+    }
+  } else {
+    # java setup and install
+    class { 'omero::java': }
 
-  # ice
-  class { 'omero::ice': }
-
+    # ice
+    class { 'omero::ice': }
+  }
 }

@@ -33,6 +33,9 @@ class omero::data {
   $nginx_release_rpm = 'http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm'
   $java_repo_url = "http://sloth.glencoesoftware.com/yum/java-sun-jdk/${operatingsystemrelease}/${architecture}/"
   $zeroc_ice_repo_url = "http://sloth.glencoesoftware.com/yum/zeroc-ice/${operatingsystemrelease}/${architecture}"
+  $glencoe_release_rpm = 'http://sloth.glencoesoftware.com/yum/el/6/products/x86_64/glencoesoftware-release-6-1.el6.noarch.rpm'
+
+  $omero_packages = ''
 
   # database settings
   $postgres_version = '9.1'
