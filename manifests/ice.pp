@@ -13,14 +13,15 @@ class omero::ice (
     'ice-java',
   ]
 
-  yumrepo { 'zeroc-ice':
-    baseurl  => $repo_url,
-    descr    => 'ZeroC Ice Packages',
-    gpgcheck => '0',
+  if !defined(Package['glencoesoftware-release']) {
+    yumrepo { 'zeroc-ice':
+      baseurl  => $repo_url,
+      descr    => 'ZeroC Ice Packages',
+      gpgcheck => '0',
+    }
   }
 
   package { $ice_packages:
     ensure  => 'installed',
-    require => Yumrepo['zeroc-ice'],
   }
 }
