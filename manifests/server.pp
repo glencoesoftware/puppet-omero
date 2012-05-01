@@ -9,15 +9,21 @@ class omero::server (
   $omero_root_pw = hiera('root_password'),
   $omero_dbname = hiera('omero_dbname'),
   $omero_installed = hiera('omero_installed', false),
+  $omero_db_enable = hiera('omero_db_enable', true),
+  $omoer_web_enable = hiera('omero_web_enable', true),
   $dbtype = hiera('dbtype'),
 ) inherits omero {
 
+  if omero_db_enable {
+    class { 'omero::database': }
+  }
+
+  if omero_web_enable {
+    class { 'omero::web': }
+  }
+
   class {
     'omero::packages':
-      ;
-    'omero::database':
-      ;
-    'omero::web':
       ;
     'omero::repo':
       ;

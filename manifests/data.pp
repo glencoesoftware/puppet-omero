@@ -35,7 +35,12 @@ class omero::data {
   $zeroc_ice_repo_url = "http://sloth.glencoesoftware.com/yum/zeroc-ice/${operatingsystemrelease}/${architecture}"
   $glencoe_release_rpm = 'http://sloth.glencoesoftware.com/yum/el/6/products/x86_64/glencoesoftware-release-6-1.el6.noarch.rpm'
 
+  # use binary packages for omero
   $omero_packages = ''
+
+  # components enabled
+  $omero_db_enable = true
+  $omero_web_enable = true
 
   # database settings
   $postgres_version = '9.1'
