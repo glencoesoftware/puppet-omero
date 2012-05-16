@@ -15,6 +15,7 @@ class omero::java (
           baseurl  => $repo_url,
           descr    => 'OMERO Java Packages',
           gpgcheck => '0',
+          before   => Package[$java_packages],
         }
       }
     }

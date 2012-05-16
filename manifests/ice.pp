@@ -18,6 +18,7 @@ class omero::ice (
       baseurl  => $repo_url,
       descr    => 'ZeroC Ice Packages',
       gpgcheck => '0',
+      before   => Package[$ice_packages],
     }
   }
 
