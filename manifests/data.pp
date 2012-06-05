@@ -28,7 +28,7 @@ class omero::data {
   $dbtype = 'postgres'
   $java_version = '1.6.0'
 
-  $epel_release_rpm = 'http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-5.noarch.rpm'
+  $epel_release_rpm = 'http://ftp.linux.ncsu.edu/pub/epel/6/i386/epel-release-6-7.noarch.rpm'
   $rpmforge_release_rpm = 'http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm'
   $nginx_release_rpm = 'http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm'
   $java_repo_url = "http://sloth.glencoesoftware.com/yum/java-sun-jdk/${operatingsystemrelease}/${architecture}/"
