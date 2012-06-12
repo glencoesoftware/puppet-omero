@@ -21,7 +21,7 @@ class omero::data {
   $postgres_custom_service_name = ''
   $omero_web_config = ''
   $omero_web_config_source = ''
-  $pytables_support = ''
+  $pytables_support = 'true'
 
   # software decisions
   $webtype = 'apache'
