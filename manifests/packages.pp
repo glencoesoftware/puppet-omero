@@ -40,49 +40,49 @@ class omero::packages (
   # kludgy -- may want to roll our own packages for everything...
 
   if $pytables_support {
-    package {                                                                 
-      'hdf5-devel':                                                             
-        ensure => 'installed',                                                  
-        tag    => 'pytables-dep',                                               
-        ;                                                                       
-      'python-pip':                                                             
-        ensure => 'installed',                                                  
-        ;                                                                       
-      'numexpr':                                                                
-        ensure   => 'installed',                                                
-        provider => 'pip',                                                      
-        tag      => 'pytables-dep',                                             
-        require  => Package['pip-numpy'],                                       
-        ;                                                                       
-      'Cython':                                                                 
-        ensure   => 'installed',                                                
-        provider => 'pip',                                                      
-        tag    => 'pytables-dep',                                               
-        ;                                                                       
-      'pip-numpy':                                                              
-        name     => 'numpy',                                                    
-        provider => 'pip',                                                      
-        ensure   => '1.6.1',                                                    
-        tag      => 'pytables-dep',                                             
-        ;                                                                       
-      'pytables':                                                               
-        ensure   => 'installed',                                                
-        name     => 'tables',                                                   
-        provider => 'pip',                                                      
-        ;                                                                       
-    }                                                                           
-                                                                                
-    # packages with pip-provider require python-pip                             
-    File['fix-pip-provider'] -> Package <| provider == 'pip' |>                 
-    # all tagged pytables-deps are required for tables                          
-    Package <| tag == 'pytables-dep' |> -> Package['pytables']                  
-                                                                                
+    package {
+      'hdf5-devel':
+        ensure => 'installed',
+        tag    => 'pytables-dep',
+        ;
+      'python-pip':
+        ensure => 'installed',
+        ;
+      'numexpr':
+        ensure   => 'installed',
+        provider => 'pip',
+        tag      => 'pytables-dep',
+        require  => Package['pip-numpy'],
+        ;
+      'Cython':
+        ensure   => 'installed',
+        provider => 'pip',
+        tag    => 'pytables-dep',
+        ;
+      'pip-numpy':
+        name     => 'numpy',
+        provider => 'pip',
+        ensure   => '1.6.1',
+        tag      => 'pytables-dep',
+        ;
+      'pytables':
+        ensure   => 'installed',
+        name     => 'tables',
+        provider => 'pip',
+        ;
+    }
+
+    # packages with pip-provider require python-pip
+    File['fix-pip-provider'] -> Package <| provider == 'pip' |>
+    # all tagged pytables-deps are required for tables
+    Package <| tag == 'pytables-dep' |> -> Package['pytables']
+
     # rhel/centos python-pip package doesn't match with the provider from puppet
-    file { 'fix-pip-provider':                                                  
-      path    => '/usr/bin/pip',                                                
-      ensure  => 'link',                                                        
-      target  => '/usr/bin/pip-python',                                         
-      require => Package['python-pip'],                                         
+    file { 'fix-pip-provider':
+      path    => '/usr/bin/pip',
+      ensure  => 'link',
+      target  => '/usr/bin/pip-python',
+      require => [ Package['python-pip'], Yumrepo['epel'] ],
     }
   }
 
