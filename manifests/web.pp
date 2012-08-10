@@ -15,15 +15,15 @@ class omero::web (
 
   case $webtype {
     'apache': {
-      class { "omero::web::nginx::disabled": }
+      #class { "omero::web::nginx::disabled": }
       class { "omero::web::apache":
-        require => Class['omero::web::nginx::disabled'],
+        #require => Class['omero::web::nginx::disabled'],
       }
     }
     'nginx': {
-      class { "omero::web::apache::disabled": }
+      #class { "omero::web::apache::disabled": }
       class { "omero::web::nginx":
-        require => Class['omero::web::apache::disabled'],
+        #require => Class['omero::web::apache::disabled'],
       }
     }
   }
