@@ -15,10 +15,6 @@
 # Sample Usage:
 #
 class omero::web::nginx::disabled {
-  package { 'nginx':
-    ensure => 'absent',
-  }
-
   service { 'nginx':
     ensure => 'stopped',
   }
