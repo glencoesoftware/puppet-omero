@@ -1,33 +1,33 @@
 # Omero environment variables -- change as necessary
 <% custom_path = [] -%>
-<% unless scope.function_hiera("java_home", '').empty? -%>
-  setenv JAVA_HOME <%= scope.function_hiera("java_home") %>
-  <% custom_path << scope.function_hiera("java_home") + '/bin' -%>
+<% unless scope.function_hiera(["java_home", '']).empty? -%>
+  setenv JAVA_HOME <%= scope.function_hiera(["java_home"]) %>
+  <% custom_path << scope.function_hiera(["java_home"]) + '/bin' -%>
 <% end -%>
-<% unless scope.function_hiera("jre_home", '').empty? -%>
-  setenv JRE_HOME <%= scope.function_hiera("jre_home") %>
-  <% custom_path << scope.function_hiera("jre_home") + '/bin' -%>
+<% unless scope.function_hiera(["jre_home", '']).empty? -%>
+  setenv JRE_HOME <%= scope.function_hiera(["jre_home"]) %>
+  <% custom_path << scope.function_hiera(["jre_home"]) + '/bin' -%>
 <% end -%>
-<% unless scope.function_hiera("ice_home", '').empty? -%>
-  setenv ICE_HOME <%= scope.function_hiera("ice_home") %>
-  <% custom_path << scope.function_hiera("ice_home") + '/bin' -%>
+<% unless scope.function_hiera(["ice_home", '']).empty? -%>
+  setenv ICE_HOME <%= scope.function_hiera(["ice_home"]) %>
+  <% custom_path << scope.function_hiera(["ice_home"]) + '/bin' -%>
 <% end -%>
-<% unless scope.function_hiera("omero_home", '').empty? -%>
-  <% custom_path << scope.function_hiera("omero_home") + '/bin' -%>
-  setenv OMERO_HOME <%= scope.function_hiera("omero_home") %>
+<% unless scope.function_hiera(["omero_home", '']).empty? -%>
+  <% custom_path << scope.function_hiera(["omero_home"]) + '/bin' -%>
+  setenv OMERO_HOME <%= scope.function_hiera(["omero_home"]) %>
 <% end -%>
-<% unless scope.function_hiera("postgres_home", '').empty? -%>
-  <% custom_path << scope.function_hiera("postgres_home") + '/bin' -%>
-  setenv POSTGRES_HOME <%= scope.function_hiera("postgres_home") %>
+<% unless scope.function_hiera(["postgres_home", '']).empty? -%>
+  <% custom_path << scope.function_hiera(["postgres_home"]) + '/bin' -%>
+  setenv POSTGRES_HOME <%= scope.function_hiera(["postgres_home"]) %>
 <% end -%>
-<% unless scope.function_hiera("python_path", '').empty? -%>
-  setenv PYTHONPATH <%= scope.function_hiera("python_path") %>:${PYTHONPATH}
+<% unless scope.function_hiera(["python_path", '']).empty? -%>
+  setenv PYTHONPATH <%= scope.function_hiera(["python_path"]) %>:${PYTHONPATH}
 <% end -%>
-<% unless scope.function_hiera("dyld_library_path", '').empty? -%>
-  setenv DYLD_LIBRARY_PATH <%= scope.function_hiera("dyld_library_path") %>:${DYLD_LIBRARY_PATH}
+<% unless scope.function_hiera(["dyld_library_path", '']).empty? -%>
+  setenv DYLD_LIBRARY_PATH <%= scope.function_hiera(["dyld_library_path"]) %>:${DYLD_LIBRARY_PATH}
 <% end -%>
-<% unless scope.function_hiera("ld_library_path", '').empty? -%>
-  setenv LD_LIBRARY_PATH <%= scope.function_hiera("ld_library_path") %>:${LD_LIBRARY_PATH}
+<% unless scope.function_hiera(["ld_library_path", '']).empty? -%>
+  setenv LD_LIBRARY_PATH <%= scope.function_hiera(["ld_library_path"]) %>:${LD_LIBRARY_PATH}
 <% end -%>
 <% unless custom_path.empty? -%>
   setenv PATH ${PATH}:<%= custom_path.join(':').to_s %>
