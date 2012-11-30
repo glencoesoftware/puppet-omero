@@ -1,18 +1,18 @@
 class omero::server () inherits omero {
 
-  $omero_owner = hiera('omero_owner'),
-  $omero_group = hiera('omero_group'),
-  $omero_home = hiera('omero_home'),
-  $omero_home_link = hiera('omero_home_link', ''),
-  $omero_db_user = hiera('omero_db_user'),
-  $db_version = hiera('db_version'),
-  $db_patch = hiera('db_patch'),
-  $omero_root_pw = hiera('root_password'),
-  $omero_dbname = hiera('omero_dbname'),
-  $omero_installed = hiera('omero_installed', false),
-  $omero_db_enable = hiera('omero_db_enable', true),
-  $omoer_web_enable = hiera('omero_web_enable', true),
-  $dbtype = hiera('dbtype'),
+  $omero_owner = hiera('omero_owner')
+  $omero_group = hiera('omero_group')
+  $omero_home = hiera('omero_home')
+  $omero_home_link = hiera('omero_home_link', '')
+  $omero_db_user = hiera('omero_db_user')
+  $db_version = hiera('db_version')
+  $db_patch = hiera('db_patch')
+  $omero_root_pw = hiera('root_password')
+  $omero_dbname = hiera('omero_dbname')
+  $omero_installed = hiera('omero_installed', false)
+  $omero_db_enable = hiera('omero_db_enable', true)
+  $omoer_web_enable = hiera('omero_web_enable', true)
+  $dbtype = hiera('dbtype')
 
   if omero_db_enable {
     class { 'omero::database': }
