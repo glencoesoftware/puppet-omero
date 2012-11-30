@@ -21,7 +21,7 @@
   "omero_group" : "omero",
   "omero_home" : "/opt/omero",
   "omero_home_link" : "",
-  "omero_installed" : "false",
+  "omero_installed" : false,
   "omero_owner" : "omero",
   "omero_packages" : "",
   "omero_web_config" : "",
