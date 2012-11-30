@@ -11,7 +11,6 @@ class omero (
     user { $omero_owner:
       ensure  => 'present',
       home    => $omero_home,
-      comment => "OMERO User",
     }
 
     group { $omero_group:
