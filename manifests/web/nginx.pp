@@ -5,11 +5,11 @@ class omero::web::nginx {
       name    => 'nginx',
       require => Package['nginx-release'],
       ;
-    'nginx-release':
-      ensure   => 'present',
-      source   => hiera('nginx_release_rpm'),
-      provider => 'rpm',
-      ;
+    # 'nginx-release':
+      # ensure   => 'present',
+      # source   => hiera('nginx_release_rpm'),
+      # provider => 'rpm',
+      # ;
   }
 
   service { 'nginx':
