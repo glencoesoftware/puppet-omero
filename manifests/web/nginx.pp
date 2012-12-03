@@ -3,7 +3,7 @@ class omero::web::nginx {
   package {
     'nginx':
       name    => 'nginx',
-      require => Package['nginx-release'],
+      # require => Package['nginx-release'],
       ;
     # 'nginx-release':
       # ensure   => 'present',
