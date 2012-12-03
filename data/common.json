@@ -6,7 +6,7 @@
   "epel_release_rpm" : "http://ftp.linux.ncsu.edu/pub/epel/6/i386/epel-release-6-7.noarch.rpm",
   "glencoe_release_rpm" : "http://sloth.glencoesoftware.com/yum/el/6/products/x86_64/glencoesoftware-release-6-1.el6.noarch.rpm",
   "ice_home" : "/usr/share/Ice-3.3.1",
-  "java_repo_url" : "http://sloth.glencoesoftware.com/yum/java-sun-jdk/${operatingsystemrelease}/${architecture}/",
+  "java_repo_url" : "http://sloth.glencoesoftware.com/yum/java-sun-jdk/6/x86_64/",
   "java_version" : "1.6.0",
   "nginx_release_rpm" : "http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm",
   "omero_data_repo_dir" : "/OMERO",
@@ -34,5 +34,5 @@
   "root_password" : "omeroroot",
   "rpmforge_release_rpm" : "http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm",
   "webtype" : "apache",
-  "zeroc_ice_repo_url" : "http://sloth.glencoesoftware.com/yum/zeroc-ice/${operatingsystemrelease}/${architecture}"
+  "zeroc_ice_repo_url" : "http://sloth.glencoesoftware.com/yum/zeroc-ice/6/x86_64"
 }
