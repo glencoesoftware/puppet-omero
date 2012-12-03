@@ -6,6 +6,7 @@ class omero::web::nginx {
       require => Package['nginx-release'],
       ;
     'nginx-release':
+      ensure   => 'present',
       source   => hiera('nginx_release_rpm'),
       provider => 'rpm',
       ;
