@@ -3,7 +3,7 @@
   "db_patch" : "0",
   "db_version" : "OMERO4.3",
   "dbtype" : "postgres",
-  "epel_release_rpm" : "http://ftp.linux.ncsu.edu/pub/epel/6/i386/epel-release-6-7.noarch.rpm",
+  "epel_release_rpm" : "http://ftp.linux.ncsu.edu/pub/epel/6/i386/epel-release-6-8.noarch.rpm",
   "glencoe_release_rpm" : "http://sloth.glencoesoftware.com/yum/el/6/products/x86_64/glencoesoftware-release-6-1.el6.noarch.rpm",
   "ice_home" : "/usr/share/Ice-3.3.1",
   "java_repo_url" : "http://sloth.glencoesoftware.com/yum/java-sun-jdk/6/x86_64/",
