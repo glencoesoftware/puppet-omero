@@ -9,6 +9,12 @@ class omero::build {
     'findbugs':
       ensure => 'installed',
       ;
+    'gcc-c++':
+      ensure => 'installed',
+      ;
+    'ice-c++-devel':
+      ensure => 'installed',
+      ;
   }
 
   class { 'omero::packages': }
